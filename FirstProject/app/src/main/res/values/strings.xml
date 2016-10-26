@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">FirstProject</string>
+    <string name="sId">学号</string>
+    <string name="idHint">请输入你的学号</string>
+    <string name="sName">姓名</string>
+    <string name="nameHint">请输入的你姓名</string>
+    <string name="sex">性别</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="birthday">出生日期</string>
+    <string name="email">邮箱</string>
+    <string name="home">家庭地址</string>
+    <string name="province">省</string>
+    <string name="locationHint">请输入城市和地区</string>
+    <string name="submit">提交</string>
+    <string name="cancel">取消</string>
+</resources>
