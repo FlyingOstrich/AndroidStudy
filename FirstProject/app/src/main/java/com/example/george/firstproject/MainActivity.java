@@ -1,6 +1,7 @@
 //姓名:赵宇杰 班级:软英1401 学号:20145031
 package com.example.george.firstproject;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,22 +45,33 @@ public class MainActivity extends AppCompatActivity {
 
         subButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                //获得输入信息
-                String showMessage = "";
-                showMessage += "姓名: " + sID.getText().toString() + "\n";
-                showMessage += "学号:" + sName.getText().toString() + "\n";
-                //确定选中的性别
+//                //获得输入信息
+//                String showMessage = "";
+//                showMessage += "姓名: " + sID.getText().toString() + "\n";
+//                showMessage += "学号:" + sName.getText().toString() + "\n";
+//                //确定选中的性别
+//                int selectedSex = sexRadioGroup.getCheckedRadioButtonId();
+//                sexRadioButton =(RadioButton)findViewById(selectedSex);
+//                showMessage += "性别:" + sexRadioButton.getText().toString() + "\n";
+//                //获取生日
+//                showMessage += "出生日期: " + datePicker.getYear() + "年" + datePicker.getMonth() + "月" + datePicker.getDayOfMonth() + "日\n";
+//
+//                showMessage += "邮箱: " + email.getText().toString() + "\n";
+//                showMessage += "家庭住址: " + provinceSpinner.getSelectedItem().toString() + "省" + location.getText().toString();
+//
+//                toast = Toast.makeText(MainActivity.this,showMessage,Toast.LENGTH_LONG);
+//                toast.show();
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("sID",sID.getText().toString());
+                intent.putExtra("sName",sName.getText().toString());
                 int selectedSex = sexRadioGroup.getCheckedRadioButtonId();
                 sexRadioButton =(RadioButton)findViewById(selectedSex);
-                showMessage += "性别:" + sexRadioButton.getText().toString() + "\n";
-                //获取生日
-                showMessage += "出生日期: " + datePicker.getYear() + "年" + datePicker.getMonth() + "月" + datePicker.getDayOfMonth() + "日\n";
+                intent.putExtra("sex", sexRadioButton.getText().toString());
+                intent.putExtra("birthday","" + datePicker.getYear() + "年" + datePicker.getMonth() + "月" + datePicker.getDayOfMonth() + "日");
+                intent.putExtra("email", email.getText().toString());
+                intent.putExtra("location", provinceSpinner.getSelectedItem().toString() + "省" + location.getText().toString());
+                startActivity(intent);
 
-                showMessage += "邮箱: " + email.getText().toString() + "\n";
-                showMessage += "家庭住址: " + provinceSpinner.getSelectedItem().toString() + "省" + location.getText().toString();
-
-                toast = Toast.makeText(MainActivity.this,showMessage,Toast.LENGTH_LONG);
-                toast.show();
             }
         });
 
