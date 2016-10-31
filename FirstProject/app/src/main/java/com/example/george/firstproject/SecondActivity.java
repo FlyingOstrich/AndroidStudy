@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class SecondActivity extends AppCompatActivity {
     private TextView sIDTextView;
     private TextView sNameTextView;
@@ -16,7 +18,6 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        Intent intent = getIntent();
         sIDTextView = (TextView)findViewById(R.id.sIDTextView);
         sNameTextView = (TextView)findViewById(R.id.sNameTextView);
         sexTextView = (TextView)findViewById(R.id.sexTextView);
@@ -24,12 +25,17 @@ public class SecondActivity extends AppCompatActivity {
         emailTextView = (TextView)findViewById(R.id.emailTextView);
         locationTextView = (TextView)findViewById(R.id.locationTextView);
 
-        sIDTextView.setText("学号: " + intent.getStringExtra("sID"));
-        sNameTextView.setText("姓名: " + intent.getStringExtra("sName"));
-        sexTextView.setText("性别: " + intent.getStringExtra("sex"));
-        birthdayTextView.setText("出生日期: " + intent.getStringExtra("birthday"));
-        emailTextView.setText("邮箱: " + intent.getStringExtra("email"));
-        locationTextView.setText("地址: " + intent.getStringExtra("location"));
+        DatabaseHandler databaseHandler = new DatabaseHandler(this);
+        List<Student> students = databaseHandler.getAllStudents();
+        for(Student student : students){
+            sIDTextView.setText("学号: " + student.getId());
+            sNameTextView.setText("姓名: " + student.getName());
+            sexTextView.setText("性别: " + student.getSex());
+            birthdayTextView.setText("出生日期: " + student.getBirthday());
+            emailTextView.setText("邮箱: " + student.getEmail());
+            locationTextView.setText("地址: " + student.getHomeLocation());
+        }
+
 
     }
 }
